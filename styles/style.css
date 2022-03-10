@@ -1,0 +1,17 @@
+body{
+    background-color: black;
+}
+h1{
+    color: white;
+    text-align: center 
+}
+.Buttons{
+    text-align:center;
+    font-size: 100px;
+}
+.Stopwatch{
+    font-size: 100px;
+}
+button{
+    padding: 50px 100px;
+}
