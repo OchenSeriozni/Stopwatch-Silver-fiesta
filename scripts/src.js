@@ -10,10 +10,12 @@ startTime.setHours(0,0,0,0);
 const start =()=>{
     let t = document.querySelector('time');
     t.timeNow =new Date;
-    t.timeNow.setHours(t.timeNow.getHours()-lastTime.getHours(),t.timeNow.getMinutes()-lastTime.getMinutes(),t.timeNow.getSeconds()-lastTime.getSeconds(),t.timeNow.getMilliseconds()-lastTime.getMilliseconds());
-    console.log(`t.timeNow -${t.timeNow}`)
+    
+    t.timeNow.setHours(t.timeNow.getHours()-lastTime.getHours());
+    t.timeNow.setMinutes(t.timeNow.getMinutes()-lastTime.getMinutes())
+    t.timeNow.setSeconds(t.timeNow.getSeconds()-lastTime.getSeconds())
+    t.timeNow.setMilliseconds(t.timeNow.getMilliseconds()-lastTime.getMilliseconds())
     startTime= new Date;
-    console.log(`startTime -${startTime}`)
     t.updateTime = timeDifference => t.innerHTML = new Date(timeDifference).toISOString().split(/T|\./)[1]
     d = setInterval(() => t.updateTime(new Date - t.timeNow), 10);
 };
@@ -27,18 +29,28 @@ const restart =()=> {
   }
 
 const pause =()=>{
+
     let p = document.querySelector('para1');
     clearInterval(d);
     pauseTime=new Date;
-    lastTime.setHours((pauseTime.getHours()+lastTime.getHours())-startTime.getHours(),(pauseTime.getMinutes()+lastTime.getMinutes())-startTime.getMinutes(),(pauseTime.getSeconds()+lastTime.getSeconds())-startTime.getSeconds(),(pauseTime.getMilliseconds()+lastTime.getMilliseconds())-startTime.getMilliseconds());
-    console.log(lastTime);
+
+    lastTime.setHours((pauseTime.getHours()+lastTime.getHours())-startTime.getHours());
+    lastTime.setMinutes((pauseTime.getMinutes()+lastTime.getMinutes())-startTime.getMinutes())
+    lastTime.setSeconds((pauseTime.getSeconds()+lastTime.getSeconds())-startTime.getSeconds())
+    lastTime.setMilliseconds((pauseTime.getMilliseconds()+lastTime.getMilliseconds())-startTime.getMilliseconds());
+
     p.updateTime = timeDifference => p.innerHTML = new Date(timeDifference).toISOString().split(/T|\./)[1]
     p.updateTime(p.pauseTime);
 }
 
-console.log(pauseTime);
-
-
-/*
-startTime.setHours(t.timeNow.getHours()-pauseTime.getHours(),t.timeNow.getMinutes()-pauseTime.getMinutes(),t.timeNow.getSeconds()-pauseTime.getSeconds(),t.timeNow.getMilliseconds()-pauseTime.getMilliseconds());
-*/
+const button = document.querySelector('button');
+button.addEventListener('click',updateButton=>{
+    if(button.innerText==='Start'){
+        button.textContent='Pause';
+        start();
+    }
+    else if(button.innerText==='Pause'){
+        button.textContent='Start';
+        pause();
+    }
+});
