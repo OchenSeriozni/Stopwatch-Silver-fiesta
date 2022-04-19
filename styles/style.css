@@ -35,7 +35,7 @@ h1{
     color: #212529;
     border-color: #212529;
 }
-.Restart{
+#Restart{
     display: inline-block;
     font-weight: 400;
     line-height: 1.5;
@@ -61,7 +61,7 @@ h1{
     border-color: #212529;
     background-color: rgb(199, 214, 200);
 }
-.Restart:hover{
+#Restart:hover{
     color: #e4d6bd;
     border-color: #212529;
     background-color: rgb(206, 141, 141);

@@ -54,3 +54,10 @@ button.addEventListener('click',updateButton=>{
         pause();
     }
 });
+const restartButton = document.getElementById('Restart');
+restartButton.addEventListener('click',()=>{
+    if(restartButton.innerText==='Restart'){
+        button.textContent='Start';
+        restart();
+    }
+})
